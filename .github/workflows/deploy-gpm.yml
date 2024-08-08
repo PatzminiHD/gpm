@@ -1,0 +1,30 @@
+name: Deploy GPM
+
+on:
+  push:
+    tags:
+      - 'gpm/v*'
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build the program
+        run: dotnet publish gpm/gpm.csproj -c Release -r win-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true --self-contained true
+
+      - name: Rename the executable file
+        run: mv gpm/bin/Release/net8.0/win-x64/publish/gpm.exe gpm/bin/Release/net8.0/win-x64/publish/${tag/\//_}.exe
+        env:
+          tag: ${{ github.ref_name }}
+
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "gpm/bin/Release/net8.0/win-x64/publish/*.exe"
+          prerelease: ${{ contains(github.ref_name, '-') }} #Set as prerelease if the tag name contains '-' (e.g. gpm/v0.0.1-dev)
+          
