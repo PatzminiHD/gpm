@@ -26,5 +26,5 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "gpm/bin/Release/net8.0/win-x64/publish/*.exe"
-          prerelease: contains(github.ref_name, '-') #Set as prerelease if the tag name contains '-' (e.g. gpm/v0.0.1-dev)
+          prerelease: ${{ contains(github.ref_name, '-') }} #Set as prerelease if the tag name contains '-' (e.g. gpm/v0.0.1-dev)
           
