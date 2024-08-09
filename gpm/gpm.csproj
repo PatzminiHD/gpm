@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="PatzminiHD.CSLib">
+      <HintPath>lib\PatzminiHD.CSLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

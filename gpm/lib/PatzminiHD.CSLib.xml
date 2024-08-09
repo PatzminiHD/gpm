@@ -1,0 +1,1465 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PatzminiHD.CSLib</name>
+    </assembly>
+    <members>
+        <member name="T:PatzminiHD.CSLib.Environment.Get">
+            <summary>
+            Get Info about the environment
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Environment.Get.OperatingSystem">
+            <summary>
+            Enum of Operating Systems
+            </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.Linux">
+            <summary> Linux Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.Windows">
+            <summary> Windows Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.MacOS">
+            <summary> MacOS Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.FreeBSD">
+            <summary> FreeBSD Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.Android">
+            <summary> Android Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.Browser">
+            <summary> BrowserOperating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.IOS">
+            <summary> IOS Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.MacCatalyst">
+            <summary> MacCatalyst Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.TvOS">
+            <summary> TV Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.Wasi">
+            <summary> Wasi Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.WatchOS">
+            <summary> WatchOS Operating System </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Get.OperatingSystem.Other">
+            <summary> Other Operating System </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Environment.Get.OS">
+            <summary>
+            The Current Operating System
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Environment.Get.OsString">
+            <summary>
+            The Current Operating System as a string
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Environment.Get.TempDirectory">
+            <summary>
+            The Directory to put temporary files in
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Environment.Get.GetDefaultColor">
+            <summary>
+            Get the default Console Color
+            </summary>
+            <returns>The default foreground and background Color</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Environment.Get.TempProgramDirectory(System.String)">
+            <summary>
+            Get the path to a directory in the temporary directory with the specified name
+            </summary>
+            <param name="ProgramName">The name of the subdirectory</param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Environment.Get.ProgramSettingsDirectory(System.String)">
+            <summary>
+            Get the path to a directory where to store Settings
+            </summary>
+            <param name="ProgramName">The name of the program</param>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Environment.Set">
+            <summary>
+            Set Info that is used by the Library
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Environment.Set.ForceConsoleColor">
+            <summary> Constrain the ConsoleColors to be of type <see cref="T:System.ConsoleColor"/> </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Set.DefaultConsoleForegroundColor">
+            <summary> The Default Console Foreground Color, only used when <see cref="P:PatzminiHD.CSLib.Environment.Set.ForceConsoleColor"/> is true </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Environment.Set.DefaultConsoleBackgroundColor">
+            <summary> The Default Console Background Color, only used when <see cref="P:PatzminiHD.CSLib.Environment.Set.ForceConsoleColor"/> is true </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.ExtensionMethods.Number">
+            <summary>
+            Extensions Methods for numbers
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.Number.Clamp``1(``0,``0,``0)">
+            <summary>
+            Clamp a number between a min and a max value
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value to clamp</param>
+            <param name="minValue">The min value to clamp to</param>
+            <param name="maxValue">The max value to clamp to</param>
+            <returns>The clamped value</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.Number.Map(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Map a value from a range to a new range
+            </summary>
+            <param name="value">The value to map</param>
+            <param name="currRangeMin">Min value of the current range</param>
+            <param name="currRangeMax">Max value of the current range</param>
+            <param name="toRangeMin">Min value of the output range</param>
+            <param name="toRangeMax">Max value of the output range</param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.Number.Map(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Map a value from a range to a new range
+            </summary>
+            <param name="value">The value to map</param>
+            <param name="currRangeMin">Min value of the current range</param>
+            <param name="currRangeMax">Max value of the current range</param>
+            <param name="toRangeMin">Min value of the output range</param>
+            <param name="toRangeMax">Max value of the output range</param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.Number.IsEven(System.Int32)">
+            <summary>
+            Check if an integer is even
+            </summary>
+            <param name="value">The value to check</param>
+            <returns>True if the value is even, otherwise false</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.Number.IsEven(System.UInt32)">
+            <summary>
+            Check if an unsigned integer is even
+            </summary>
+            <param name="value">The value to check</param>
+            <returns>True if the value is even, otherwise false</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.ExtensionMethods.String">
+            <summary>
+            Contains extension Methods for the String type
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.String.Count(System.String,System.Char)">
+            <summary>
+            Count the number of time a character existing in a string
+            </summary>
+            <param name="a">The string to search</param>
+            <param name="charToSearch">The character to search for</param>
+            <returns>How often the character exists in the string</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.ExtensionMethods.TimeSpanExtension">
+            <summary>
+            Contains Extension Methods for the <see cref="T:System.TimeSpan"/> type
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.TimeSpanExtension.ToString(System.Nullable{System.TimeSpan},System.String)">
+            <summary>
+            Format a <see cref="T:System.TimeSpan"/> to a string<br/>
+            In the format string, the following are replaced:<br/><br/>
+            DD -> <see cref="P:System.TimeSpan.Days"/><br/>
+            HH -> <see cref="P:System.TimeSpan.Hours"/><br/>
+            MM -> <see cref="P:System.TimeSpan.Minutes"/><br/>
+            SS -> <see cref="P:System.TimeSpan.Seconds"/><br/>
+            ms -> <see cref="P:System.TimeSpan.Milliseconds"/><br/>
+            mcs -> <see cref="P:System.TimeSpan.Microseconds"/>
+            </summary>
+            <param name="timeSpan"></param>
+            <param name="formatString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.BufferObject`1">
+             <summary>
+             Our buffer object abstraction.<br/><br/>
+            
+             The code in this class was originally taken from the Silk.NET project (https://github.com/dotnet/Silk.NET)<br/>
+             Silk.NET is licensed under the MIT License:<br/><br/>
+            
+            Copyright (c) 2019-2020 Ultz Limited<br/>
+            Copyright (c) 2021- .NET Foundation and Contributors<br/><br/>
+            
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+            
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+             </summary>
+             <typeparam name="TDataType"></typeparam>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.BufferObject`1.#ctor(Silk.NET.OpenGL.GL,System.Span{`0},Silk.NET.OpenGL.BufferTargetARB)">
+            <summary>
+            Constructor for a Buffer Object
+            </summary>
+            <param name="gl">Reference to the OpenGL API</param>
+            <param name="data">Data of the Buffer Object</param>
+            <param name="bufferType">Type of the buffer</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.BufferObject`1.Bind">
+            <summary>
+            Bind the buffer object
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.BufferObject`1.Dispose">
+            <summary>
+            Dispose used resources
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader">
+             <summary>
+             Abstraction for a Shader<br/><br/>
+            
+             The code in this class was originally taken from the Silk.NET project (https://github.com/dotnet/Silk.NET)<br/>
+             Silk.NET is licensed under the MIT License:<br/><br/>
+            
+            Copyright (c) 2019-2020 Ultz Limited<br/>
+            Copyright (c) 2021- .NET Foundation and Contributors<br/><br/>
+            
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+            
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+             </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader.#ctor(Silk.NET.OpenGL.GL,System.String,System.String)">
+            <summary>
+            Constructor for a shader object
+            </summary>
+            <param name="gl">Reference to the OpenGL API</param>
+            <param name="vertexPath">Filepath to a file containing the vertex shader code</param>
+            <param name="fragmentPath">Filepath to a file containing the fragment shader code</param>
+            <exception cref="T:System.Exception">Is thrown when the shaders failed to compile or to link</exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader.Use">
+            <summary>
+            Use the shader
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader.SetUniform(System.String,System.Int32)">
+            <summary>
+            Uniforms are properties that applies to the entire geometry 
+            </summary>
+            <param name="name">Name of the uniform</param>
+            <param name="value"></param>
+            <exception cref="T:System.Exception">When the uniform is not found to the shader</exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader.SetUniform(System.String,System.Single)">
+            <summary>
+            Uniforms are properties that applies to the entire geometry 
+            </summary>
+            <param name="name">Name of the uniform</param>
+            <param name="value"></param>
+            <exception cref="T:System.Exception">When the uniform is not found to the shader</exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader.Dispose">
+            <summary>
+            Dispose used resources
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Texture">
+             <summary>
+             Abstraction for a Texture<br/><br/>
+            
+             The code in this class was originally taken from the Silk.NET project (https://github.com/dotnet/Silk.NET)<br/>
+             Silk.NET is licensed under the MIT License:<br/><br/>
+            
+            Copyright (c) 2019-2020 Ultz Limited<br/>
+            Copyright (c) 2021- .NET Foundation and Contributors<br/><br/>
+            
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+            
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+             </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Texture.#ctor(Silk.NET.OpenGL.GL,System.String)">
+            <summary>
+            Constructor for a texture object from an image
+            </summary>
+            <param name="gl">Reference to the OpenGL API</param>
+            <param name="path">Filepath to the image that should be used as the texture</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Texture.#ctor(Silk.NET.OpenGL.GL,System.Span{System.Byte},System.UInt32,System.UInt32)">
+            <summary>
+            Constructor for a texture object from other data
+            </summary>
+            <param name="gl">Reference to the OpenGL API</param>
+            <param name="data">Raw bytes of texture data</param>
+            <param name="width">Width of the texture</param>
+            <param name="height">Height of the texture</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Texture.Bind(Silk.NET.OpenGL.TextureUnit)">
+            <summary>
+            Bind the texture to a texture slot
+            </summary>
+            <param name="textureSlot">Texture Slot to bind to</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Texture.Dispose">
+            <summary>
+            Dispose used resources
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.VertexArrayObject`2">
+             <summary>
+             The vertex array object abstraction<br/><br/>
+            
+             The code in this class was originally taken from the Silk.NET project (https://github.com/dotnet/Silk.NET)<br/>
+             Silk.NET is licensed under the MIT License:<br/><br/>
+            
+            Copyright (c) 2019-2020 Ultz Limited<br/>
+            Copyright (c) 2021- .NET Foundation and Contributors<br/><br/>
+            
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+            
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+             </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.VertexArrayObject`2.#ctor(Silk.NET.OpenGL.GL,PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.BufferObject{`0},PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.BufferObject{`1})">
+            <summary>
+            Constructor for a vertex array object
+            </summary>
+            <param name="gl">Reference to the OpenGL API</param>
+            <param name="vbo">Reference to the Vertex Buffer Object</param>
+            <param name="ebo">Reference to the Element Buffer Object</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.VertexArrayObject`2.VertexAttributePointer(System.UInt32,System.Int32,Silk.NET.OpenGL.VertexAttribPointerType,System.UInt32,System.Int32)">
+            <summary>
+            Set up a vertex attribute pointer
+            </summary>
+            <param name="index"></param>
+            <param name="count"></param>
+            <param name="type"></param>
+            <param name="vertexSize"></param>
+            <param name="offSet"></param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.VertexArrayObject`2.Bind">
+            <summary>
+            Bind the vertex array
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.VertexArrayObject`2.Dispose">
+            <summary>
+            Dispose used resources
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Info">
+            <summary>
+            Contains Infos about the Library
+            </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Info.Name">
+            <summary> The name of the Library </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Info.Version">
+            <summary> The version of the Library </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Info.#ctor(System.String)">
+            <summary>
+            Constructor used by the automatic assigning of attributes
+            </summary>
+            <param name="buildTimeStamp">The time when the Library was built</param>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Info.BuildTime">
+            <summary> BuildTime property method </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Info.BuildTimeStamp">
+            <summary> The DateTime when the Library was built </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.CmdArgsParser">
+            <summary>
+            A class for parsing command lines arguments
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.CmdArgsParser.ArgType">
+            <summary>
+            The Types an argument can have
+            </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.CmdArgsParser.ArgType.SET">
+            <summary> An argument that can only be set and does not expect any arguments afterwards </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.CmdArgsParser.ArgType.BOOL">
+            <summary> An argument that expects either "true" or "flase" to come afterwards </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.CmdArgsParser.ArgType.UINT">
+            <summary> An argument that expects an unsigned integer afterwards </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.CmdArgsParser.ArgType.INT">
+            <summary> An argument that expects an integer afterwards </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.CmdArgsParser.ArgType.DOUBLE">
+            <summary> An argument that expect a double (seperator '.' or ',') afterwards </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.CmdArgsParser.ArgType.STRING">
+            <summary> An argument that expects a string afterwards.<br/>
+                      Strings with spaces have to be put in quotation marks </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.CmdArgsParser.#ctor(System.String[],System.Collections.Generic.List{System.ValueTuple{System.Collections.Generic.List{System.String},PatzminiHD.CSLib.Input.Console.CmdArgsParser.ArgType}})">
+            <summary>
+            Initialise a new <see cref="T:PatzminiHD.CSLib.Input.Console.CmdArgsParser"/> object with an array of args and a list of accepted args
+            </summary>
+            <param name="args"></param>
+            <param name="acceptedArgs"></param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.CmdArgsParser.Parse">
+            <summary>
+            Parse the arguments that were given to the object in the constructor
+            </summary>
+            <returns>A Dictionary with<br/>
+                     the key being the List of names given to the constructor as acceptedArgs<br/>
+                     and<br/>
+                     the value being a tuple of Type and object, with the type specifying the type of the object</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.DropDownMenu">
+            <summary>
+            Contains Methods for showing a drop down menu
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.DropDownMenu.Show(System.Collections.Generic.List{System.String},System.Int32)">
+            <summary>
+            Show a DropDownMenu
+            </summary>
+            <param name="options"></param>
+            <param name="defaultSelection"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.MessageBox">
+            <summary>
+            Class containing members for showing MessageBoxes
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.MessageBox.ResponseOptions">
+            <summary>
+            Valid Response Types
+            </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.MessageBox.ResponseOptions.OK">
+            <summary> Only an OK respone option </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.MessageBox.ResponseOptions.OK_CANCEL">
+            <summary> OK and Cancel respone options </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.MessageBox.ResponseOptions.YES_NO">
+            <summary> Yes and No response options </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.MessageBox.ResponseOptions.YES_NO_CANCEL">
+            <summary> Yes, No and Cancel response options </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.MessageBox.Response">
+            <summary> Responses that are returned from the message box </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.MessageBox.Response.OK">
+            <summary> User responded OK </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.MessageBox.Response.CANCEL">
+            <summary> User responded Cancel </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.MessageBox.Response.YES">
+            <summary> User responded Yes </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.MessageBox.Response.NO">
+            <summary> User responded No </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.MessageBox.Show(System.String,System.String)">
+            <summary>
+            Show a Message Box with only an OK respone option
+            </summary>
+            <param name="message">The Message to show</param>
+            <param name="title">Title, shown in the top right of the box</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.MessageBox.Show(System.String,System.String,PatzminiHD.CSLib.Input.Console.MessageBox.ResponseOptions,System.Int32)">
+            <summary>
+            Show a message box
+            </summary>
+            <param name="message">The message to show</param>
+            <param name="title">Title, shown in the top right of the box</param>
+            <param name="responseType">Response option to give the player</param>
+            <param name="edgeDistance">Distance between the edge of the console and the frame of the message box</param>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.TryGet">
+            <summary>
+            Contains Methods for trying to get inputs of a specific type
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.TryGet.UInt(System.UInt32@,System.String,System.Boolean)">
+            <summary>
+            Get an unsigned integer from the user
+            </summary>
+            <param name="value">The value the user entered. 0 if the user cancelled the input</param>
+            <param name="message">The message to display to the user</param>
+            <param name="emptyToCancel">True if the user can enter nothing to cancel the input</param>
+            <returns>True if the input was valid<br/>False if the input was cancelled</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.TryGet.Int(System.Int32@,System.String,System.Boolean)">
+            <summary>
+            Get an integer from the user
+            </summary>
+            <param name="value">The value the user entered. 0 if the user cancelled the input</param>
+            <param name="message">The message to display to the user</param>
+            <param name="emptyToCancel">True if the user can enter nothing to cancel the input</param>
+            <returns>True if the input was valid<br/>False if the input was cancelled</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.TryGet.Double(System.Double@,System.String,System.Boolean)">
+            <summary>
+            Get an double from the user
+            </summary>
+            <param name="value">The value the user entered. 0 if the user cancelled the input</param>
+            <param name="message">The message to display to the user</param>
+            <param name="emptyToCancel">True if the user can enter nothing to cancel the input</param>
+            <returns>True if the input was valid<br/>False if the input was cancelled</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.YesNo">
+            <summary>
+            Contains Classes for displaying Yes or No Questions, ending in [Y/N]
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.YesNo.Show(System.String)">
+            <summary>
+            Show a message, followed by [Y/N]<br/>Returns the users response
+            </summary>
+            <param name="message">The question you want to ask</param>
+            <returns>True if the answer was yes, otherwise false</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Input.Console.YesNo.Show(System.String,System.Boolean)">
+            <summary>
+            Show a message, followed by [Y/n] or [y/N] depending on default response<br/>Returns the users response
+            </summary>
+            <param name="message">The question you want to ask</param>
+            <param name="defaultResponse">The deafult response to the question</param>
+            <returns>True if the answer was yes, otherwise false</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Math.Statistics">
+            <summary>
+            This class contains Methods for statistical analysis
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Average(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary> Get the average value of a list of integers </summary>
+            <param name="data">A list of intergers</param>
+            <returns>The average</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Average(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary> Get the average value of a list of longs </summary>
+            <param name="data">A list of longs</param>
+            <returns>The average</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Average(System.Collections.Generic.IEnumerable{System.Single})">
+            <summary> Get the average value of a list of floats </summary>
+            <param name="data">A list of floats</param>
+            <returns>The average</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Average(System.Collections.Generic.IEnumerable{System.Decimal})">
+            <summary> Get the average value of a list of decimals </summary>
+            <param name="data">A list of decimals</param>
+            <returns>The average</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Average(System.Collections.Generic.IEnumerable{System.Double})">
+            <summary> Get the average value of a list of doubles </summary>
+            <param name="data">A list of doubles</param>
+            <returns>The average</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Median(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Get the median for a list of integers
+            </summary>
+            <param name="data">A list of integers</param>
+            <returns>The median</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Median(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Get the median for a list of longs
+            </summary>
+            <param name="data">A list of longs</param>
+            <returns>The median</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Median(System.Collections.Generic.IEnumerable{System.Single})">
+            <summary>
+            Get the median for a list of floats
+            </summary>
+            <param name="data">A list of floats</param>
+            <returns>The median</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Median(System.Collections.Generic.IEnumerable{System.Decimal})">
+            <summary>
+            Get the median for a list of decimals
+            </summary>
+            <param name="data">A list of decimals</param>
+            <returns>The median</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Median(System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Get the median for a list of doubles
+            </summary>
+            <param name="data">A list of doubles</param>
+            <returns>The median</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.StandardDeviation(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Get the standard deviation for a list of integers
+            </summary>
+            <param name="data">A list of integers</param>
+            <returns>The standard deviation</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.StandardDeviation(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Get the standard deviation for a list of longs
+            </summary>
+            <param name="data">A list of longs</param>
+            <returns>The standard deviation</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.StandardDeviation(System.Collections.Generic.IEnumerable{System.Single})">
+            <summary>
+            Get the standard deviation for a list of floats
+            </summary>
+            <param name="data">A list of floats</param>
+            <returns>The standard deviation</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.StandardDeviation(System.Collections.Generic.IEnumerable{System.Decimal})">
+            <summary>
+            Get the standard deviation for a list of decimals
+            </summary>
+            <param name="data">A list of decimals</param>
+            <returns>The standard deviation</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.StandardDeviation(System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Get the standard deviation for a list of doubles
+            </summary>
+            <param name="data">A list of doubles</param>
+            <returns>The standard deviation</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Sqrt(System.Decimal)">
+            <summary>
+            Returns the square root of a specified number
+            </summary>
+            <param name="d"></param>
+            <returns>The square root of the specified number</returns>
+            <throws><see cref="T:System.ArgumentException"/> if d is negative</throws>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Statistics.Sqrt(System.Decimal,System.Nullable{System.Decimal})">
+            <summary>
+            Returns the square root of a specified number
+            </summary>
+            <param name="d"></param>
+            <param name="guess">a guess for the square root</param>
+            <returns>The square root of the specified number</returns>
+            <throws><see cref="T:System.ArgumentException"/> if d is negative</throws>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.FileDownloader">
+            <summary>
+            Download files while monitoring progress
+            </summary>
+        </member>
+        <member name="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadProgess">
+            <summary>
+            An event that fires every time the download progresses
+            </summary>
+        </member>
+        <member name="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadFinished">
+            <summary>
+            An event that fires every time a download finishes
+            </summary>
+        </member>
+        <member name="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadFailed">
+            <summary>
+            An event that fires every time a download failes
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.FileDownloader.Download(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Download a file from a given url to a given Path
+            </summary>
+            <param name="url">The URL where to download from</param>
+            <param name="localPath">The local path where to save the file (with filename and extension)</param>
+            <param name="overwrite">True if an existing local file with the same path should be overwritten</param>
+            <param name="createSubfolders">True if nonexistent subfolders in <paramref name="localPath"/> should be created</param>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.FileDownloader.DownloadProgressEventArgs">
+            <summary>
+            The EventArgs for the <see cref="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadProgess"/> event
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.FileDownloader.DownloadProgressEventArgs.#ctor(System.String,System.String,System.Byte)">
+            <summary>
+            The EventArgs for the <see cref="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadProgess"/> event
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.FileDownloader.DownloadProgressEventArgs.Url">
+            <summary> The URL where the file was downloaded from </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.FileDownloader.DownloadProgressEventArgs.FilePath">
+            <summary> The Local path the file should be downloaded to </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.FileDownloader.DownloadProgressEventArgs.Progress">
+            <summary> The Download progress in percent from 0 to 100 </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.FileDownloader.DownloadFinishedEventArgs">
+            <summary>
+            The EventArgs for the <see cref="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadFinished"/> event
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.FileDownloader.DownloadFinishedEventArgs.#ctor(System.String,System.String)">
+            <summary>
+            The EventArgs for the <see cref="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadFinished"/> event
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.FileDownloader.DownloadFinishedEventArgs.Url">
+            <summary> The URL where the file was downloaded from </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.FileDownloader.DownloadFinishedEventArgs.FilePath">
+            <summary> The Local path the file should be downloaded to </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.FileDownloader.DownloadFailedEventArgs">
+            <summary>
+            The EventArgs for the <see cref="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadFailed"/> event
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.FileDownloader.DownloadFailedEventArgs.#ctor(System.String,System.String,System.String)">
+            <summary>
+            The EventArgs for the <see cref="E:PatzminiHD.CSLib.Network.FileDownloader.DownloadFailed"/> event
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.FileDownloader.DownloadFailedEventArgs.Url">
+            <summary> The URL where the file was downloaded from </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.FileDownloader.DownloadFailedEventArgs.FilePath">
+            <summary> The Local path the file should be downloaded to </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.FileDownloader.DownloadFailedEventArgs.FailReason">
+            <summary> The reason why the download has failed (if available) </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.Http">
+            <summary>
+            Contains Methods for Http requests
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.Http.PostRequest(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Send a HTTP Post request to a specified url with specified data
+            </summary>
+            <param name="url">The url or ip address of the server</param>
+            <param name="values">The values of the request</param>
+            <returns>The result of the request</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.Http.GetRequest(System.String)">
+            <summary>
+            Send a HTTP Get request to a specified url
+            </summary>
+            <param name="url">The url or ip address of the server</param>
+            <returns>The result of the request</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.Http.GetRequest(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Send a HTTP Get request to a specified url with specified data
+            </summary>
+            <param name="httpRequestMessage">The request message to send to the server</param>
+            <returns>The result of the request</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.SpecificApps.GitHub">
+            <summary>
+            Contains network methods specific to GitHub
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubReleaseAssets">
+            <summary>
+            Represents a Asset in a GitHub Release
+            </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubReleaseAssets.url">
+            <summary> The API url of the asset </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubReleaseAssets.name">
+            <summary> The filename of the asset </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubReleaseAssets.browser_download_url">
+            <summary> The download url of the asset </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease">
+            <summary>
+            Represents a GitHub Release
+            </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease.url">
+            <summary> The API url of the release </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease.html_url">
+            <summary> The browser url of the release </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease.name">
+            <summary> The name of the release </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease.tag_name">
+            <summary> The tag name of the release </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease.draft">
+            <summary> True if the release is a draft </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease.prerelease">
+            <summary> True if the release is a prerelease </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease.body">
+            <summary> The body (description) of the release </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease.assets">
+            <summary> The list of files that have been added to the release </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GetLatestRelease(System.String,System.String,System.String)">
+            <summary>
+            Get the latest release of a specified repository
+            </summary>
+            <param name="repoOwner">The account or organization name that owns the repository</param>
+            <param name="repoName">The name of the repository</param>
+            <param name="accessToken">The access token if the repository is private</param>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Output.Console.CellBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.CellBase.Content">
+            <summary>
+            The Content of the cell
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.CellBase.ContentString">
+            <summary>
+            The Content of the cell as a string<br/>When setting, the content has the default Colors
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.CellBase.LeftPos">
+            <summary>
+            The X position of the Cell
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.CellBase.TopPos">
+            <summary>
+            The Y position of the Cell
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.CellBase.Width">
+            <summary>
+            The Width of the Cell
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.CellBase.Height">
+            <summary>
+            The Height of the Cell
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.CellBase.Draw">
+            <summary>
+            Draw the content of the cell
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.CellBase.Clear">
+            <summary>
+            Clear the Content
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Output.Console.Color">
+            <summary>
+            Contains Methods for manipulating Console Colors
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Color.SwapForegroundBackgroundColor">
+            <summary>
+            Swap Foreground and Background Color
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Color.ResetColor">
+            <summary>
+            Reset the Color of the Console with respect to <see cref="P:PatzminiHD.CSLib.Environment.Set.ForceConsoleColor"/>
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Output.Console.ProgressBar">
+            <summary>
+            A class for displaying a progress bar in the form of "87%  [######### ]"
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.ProgressBar.MinValue">
+            <summary>
+            The minimum value that <see cref="P:PatzminiHD.CSLib.Output.Console.ProgressBar.Value"/> can be
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.ProgressBar.MaxValue">
+            <summary>
+            The maximum value that <see cref="P:PatzminiHD.CSLib.Output.Console.ProgressBar.Value"/> can be
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.ProgressBar.Left">
+            <summary>
+            The distance of the progress bar from the left of the console
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.ProgressBar.Top">
+            <summary>
+            The distance of the progress bar from the top of the console
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.ProgressBar.Value">
+            <summary>
+            The current value of the progress. Values outside of <see cref="P:PatzminiHD.CSLib.Output.Console.ProgressBar.MinValue"/>
+            <see cref="P:PatzminiHD.CSLib.Output.Console.ProgressBar.MaxValue"/> will get clamped between those two
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.ProgressBar.Length">
+            <summary>
+            The length of the progress bar. Can not be less than 8
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.ProgressBar.AutoDraw">
+            <summary>
+            True if the Progressbar should automatically be redrawn when properties are updated
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.ProgressBar.PreventOverdraw">
+            <summary>
+            True if the progress bar should not be redrawn when the percentage does not change
+            (might lead to a choppy animation of the bar if length is >100)
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.ProgressBar.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32,System.Boolean,System.Boolean)">
+            <summary>
+            Constructor for the ProgressBar Object
+            </summary>
+            <param name="min">The minimum value that <see cref="P:PatzminiHD.CSLib.Output.Console.ProgressBar.Value"/> can be</param>
+            <param name="max">The maximum value that <see cref="P:PatzminiHD.CSLib.Output.Console.ProgressBar.Value"/> can be</param>
+            <param name="posLeft">The distance of the progress bar from the left of the console</param>
+            <param name="posTop">The distance of the progress bar from the top of the console</param>
+            <param name="maxLength">The length of the progress bar. Can not be less than 8</param>
+            <param name="autoDraw">True if the Progressbar should automatically be redrawn when properties are updated</param>
+            <param name="preventOverdraw">True if the progress bar should not be redrawn when the percentage does not change (might lead to a choppy animation of the bar if length is >100)</param>
+            <exception cref="T:System.ArgumentException">Thrown if <paramref name="max"/> is less than <paramref name="min"/></exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.ProgressBar.Draw">
+            <summary>
+            Draw the progressbar
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.ProgressBar.Draw(System.Int32,System.Int32)">
+            <summary>
+            Draw the progressbar at a specific location
+            </summary>
+            <param name="left"></param>
+            <param name="top"></param>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Output.Console.Table.Base">
+            <summary>
+            Base class for a table
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.TableValues">
+            <summary>
+            The values in the table
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.ColumnHeaders">
+            <summary>
+            The Headers of the table columns
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.ColumnWidths">
+            <summary>
+            The Width of the table columns<br/>Is only used when <see cref="P:PatzminiHD.CSLib.Output.Console.Table.Base.ColumnHeaders"/> is not set
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.TopPos">
+            <summary>
+            The Top Position of the table
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.LeftPos">
+            <summary>
+            The Left Position of the table
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.Height">
+            <summary>
+            The Height of the table
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.FirstShownRow">
+            <summary>
+            The First shown row of the table, used for scrolling through the table
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.HighlightedRow">
+            <summary>
+            The Row that is highlighted <br/>-1 for no highlighting
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.HighlightedColumn">
+            <summary>
+            The Column that is highlighted <br/>-1 for no highlighting
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.ForegroundColor">
+            <summary>
+            The Foreground Color for cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.BackgroundColorEven">
+            <summary>
+            The Background Color for even cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.BackgroundColorOdd">
+            <summary>
+            The Background Color for odd cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.HighlightForegroundColor">
+            <summary>
+            The Foreground Color for highlighted cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.HighlightBackgroundColor">
+            <summary>
+            The Background Color for highlighted cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.IsColored">
+            <summary>
+            True if the Cells should be colored
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Base.AutoDraw">
+            <summary>
+            True if the table should automatically redraw when a property changes
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Base.#ctor(System.Collections.Generic.List{System.ValueTuple{System.Collections.Generic.List{PatzminiHD.CSLib.Output.Console.Table.Entry},System.UInt32}},System.ValueTuple{System.Collections.Generic.List{System.ValueTuple{PatzminiHD.CSLib.Output.Console.Table.Entry,System.UInt32}},System.UInt32},System.UInt32)">
+            <summary>
+            Constructor for the TableBase, initialising the table values as well as headers
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Base.#ctor(System.Collections.Generic.List{System.ValueTuple{System.Collections.Generic.List{PatzminiHD.CSLib.Output.Console.Table.Entry},System.UInt32}},System.Collections.Generic.List{System.UInt32},System.UInt32)">
+            <summary>
+            Constructor for the TableBase, initialising the table values as well as the column widths
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Base.Draw">
+            <summary>
+            Draw every Cell in the Table
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Output.Console.Table.Cell">
+            <summary>
+            Base Class for a Table Cell
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.ForegroundColor">
+            <summary> The ForegroundColor of the Cell </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.BackgroundColor">
+            <summary> The BackgroundColor of the Cell </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.HighlightForegroundColor">
+            <summary> The HighlightForegroundColor of the Cell </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.HighlightBackgroundColor">
+            <summary> The HighlightBackgroundColor of the Cell </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.IsHighlighted">
+            <summary>
+            True if the cell is highlighted
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.AutoDraw">
+            <summary>
+            True to automatically redraw the cell when a property changes
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.ContentString">
+            <summary>
+            The Content as an String
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.ContentInt">
+            <summary>
+            The Content as an Integer
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.ContentUInt">
+            <summary>
+            The Content as an unsigned Integer
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.ContentDouble">
+            <summary>
+            The Content as a Double
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.ContentDateTime">
+            <summary>
+            The Content as a DateTime
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Cell.ContentTimeSpan">
+            <summary>
+            The Content as a TimeSpan
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Cell.Draw">
+            <summary>
+            Draw the cell
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Output.Console.Table.Entry">
+            <summary>
+            Class for a table entry
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Entry.Value">
+            <summary> The value of the entry </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.Entry.Type">
+            <summary> The type of the entry </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Entry.#ctor(System.String)">
+            <summary> Create a new Entry object with a string type </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Entry.#ctor(System.Nullable{System.Int32})">
+            <summary> Create a new Entry object with a int? type </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Entry.#ctor(System.Nullable{System.UInt32})">
+            <summary> Create a new Entry object with a uint type </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Entry.#ctor(System.Nullable{System.Double})">
+            <summary> Create a new Entry object with a double type </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Entry.#ctor(System.Nullable{System.DateTime})">
+            <summary> Create a new Entry object with a DateTime type </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.Entry.#ctor(System.Nullable{System.TimeSpan})">
+            <summary> Create a new Entry object with a TimeSpan type </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Output.Console.Table.RowBase">
+            <summary>
+            Base Class for a table row
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.RowValues">
+            <summary>
+            The Values in this Row<br/>Tuple of object CellValue, Type TypeOfCellValue, uint Width
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.IsEvenRow">
+            <summary>
+            If the row is even or odd<br/>(Only used when <see cref="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.IsColored"/> is true)
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.IsColored">
+            <summary>
+            True if the Color should be switched between each Row
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.AutoDraw">
+            <summary>
+            True to automatically redraw the row when a property changes
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.Height">
+            <summary>
+            The Height of the Row
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.TopPos">
+            <summary>
+            The Top position of the Row
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.LeftPos">
+            <summary>
+            The left position of the Row
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.ForegroundColor">
+            <summary>
+            The Foreground Color of the cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.BackgroundColorEven">
+            <summary>
+            The Background Color for even cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.BackgroundColorOdd">
+            <summary>
+            The Background Color for odd cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.HighlightForegroundColor">
+            <summary>
+            The Foreground Color for highlighted cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.HighlightBackgroundColor">
+            <summary>
+            The Background Color for highlighted cells
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Console.Table.RowBase.HighlightedCell">
+            <summary>
+            The Cell that is highlighted<br/>-1 if no cell should be highlighted
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.RowBase.#ctor">
+            <summary>
+            Instantiate a new object of TableRowBase class
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Table.RowBase.Draw">
+            <summary>
+            Draw all cells in the Row
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Settings.Base">
+            <summary>
+            Base for saving Application Settings. This class is abstract
+            </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Settings.Base.ApplicationName">
+            <summary> The name of the application </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Settings.Base.ApplicationVersion">
+            <summary> The Version of the application </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Settings.Base.ApplicationSettingsFilePath">
+            <summary> The Path of the settings file </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Settings.Base.Serialize">
+            <summary> Serialize Settings to a file </summary>
+            <exception cref="T:System.Exception"> When <see cref="F:PatzminiHD.CSLib.Settings.Base.ApplicationName"/> is null </exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Settings.Base.Deserialze``1">
+            <summary> Deserialize Settings from a file </summary>
+            <typeparam name="T"> Type of settings class </typeparam>
+            <returns></returns>
+            <exception cref="T:System.Exception"> When deserializing failed </exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Settings.Base.IsGreaterVersion(System.String,System.String)">
+            <summary>
+            Compares two version strings in the format "vX.Y.Z" and returns true if v1 is greater than v2
+            </summary>
+            <param name="v1">Version string 1</param>
+            <param name="v2">Version string 2</param>
+            <returns>True if v1 is greater than v2, otherwise false</returns>
+            <exception cref="T:System.ArgumentException">If Parsing of version string failed</exception>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Types.ColoredString">
+            <summary>
+            A Colored String
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Types.ColoredString.Content">
+            <summary>
+            The Content of the Colored String
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Types.ColoredString.Length">
+            <summary>
+            Length of the Colored String
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.#ctor">
+            <summary>
+            Default Contructor
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.#ctor(System.String)">
+            <summary>
+            Instantiate a new ColoredString Object with string with default colors
+            </summary>
+            <param name="content">The content</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.#ctor(System.String,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            Instantiate a new ColoredString Object with string with specified colors
+            </summary>
+            <param name="content">The content</param>
+            <param name="foregroundColor">The foreground Color</param>
+            <param name="backgroundColor">The background Color</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.Add(System.String)">
+            <summary>
+            Add content to the colored string with the default ConsoleColors
+            </summary>
+            <param name="content">The string to add</param>
+            <exception cref="T:System.ArgumentNullException">If content is null</exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.Add(System.String,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            Add content to the colored string with specified ConsoleColors
+            </summary>
+            <param name="content">The string to add</param>
+            <param name="foregroundColor">The foreground color of the part of the string</param>
+            <param name="backgroundColor">The background color of the part of the string</param>
+            <exception cref="T:System.ArgumentNullException">If content is null</exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.ToString">
+            <summary>
+            Get just the string of the <see cref="T:PatzminiHD.CSLib.Types.ColoredString"/>
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.IsNullOrEmpty">
+            <summary>
+            Check if the content is null or empty
+            </summary>
+            <returns>True of the Content is null or empty</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.Write">
+            <summary>
+            Write the Colored String
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.WriteLine">
+            <summary>
+            Write the Colored String with a newline at the end
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.Write(System.UInt32)">
+            <summary>
+            Write the Colored String, skipping the first startPos characters
+            </summary>
+            <param name="startPos">How many characters to skip</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.WriteLine(System.UInt32)">
+            <summary>
+            Write the Colored String, skipping the first startPos characters with a newline at the end
+            </summary>
+            <param name="startPos">How many characters to skip</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.Write(System.UInt32,System.UInt32)">
+            <summary>
+            Write the Colored String, skipping the first startPos characters, taking length characters
+            </summary>
+            <param name="startPos">How many characters to skip</param>
+            <param name="length">How many characters to take</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.ColoredString.WriteLine(System.UInt32,System.UInt32)">
+            <summary>
+            Write the Colored String, skipping the first startPos characters, taking length characters with a newline at the end
+            </summary>
+            <param name="startPos">How many characters to skip</param>
+            <param name="length">How many characters to take</param>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Types.Variant`2">
+            <summary>
+            A Type that is either T1 or T2
+            </summary>
+            <typeparam name="T1">Type 1</typeparam>
+            <typeparam name="T2">Type 2</typeparam>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.Variant`2.#ctor(`0)">
+            <summary>
+            Create the Variant as Type T1
+            </summary>
+            <param name="item">The value of the variant</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.Variant`2.op_Implicit(`0)~PatzminiHD.CSLib.Types.Variant{`0,`1}">
+            <summary>
+            Implicitly cast from Type T1 to variant
+            </summary>
+            <param name="item">The value of the variant</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.Variant`2.op_Explicit(PatzminiHD.CSLib.Types.Variant{`0,`1})~`0">
+            <summary>
+            Explicitly cast from Type T1 to variant
+            </summary>
+            <param name="item">The value of the variant</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.Variant`2.Make1(`0)">
+            <summary>
+            Create a new Variant, placing the item explicitly as the first type
+            </summary>
+            <param name="item">The value of the variant</param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.Variant`2.#ctor(`1)">
+            <summary>
+            Create the Variant as Type T2
+            </summary>
+            <param name="item">The value of the variant</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.Variant`2.op_Implicit(`1)~PatzminiHD.CSLib.Types.Variant{`0,`1}">
+            <summary>
+            Implicitly cast from Type T2 to variant
+            </summary>
+            <param name="item">The value of the variant</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.Variant`2.op_Explicit(PatzminiHD.CSLib.Types.Variant{`0,`1})~`1">
+            <summary>
+            Explicitly cast from Type T2 to variant
+            </summary>
+            <param name="item">The value of the variant</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.Variant`2.Make2(`1)">
+            <summary>
+            Create a new Variant, placing the item explicitly as the second type
+            </summary>
+            <param name="item">The value of the variant</param>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Types.VariantBase">
+            <summary>
+            Base class for the variant
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Types.VariantBase.Index">
+            <summary>
+            Index of the Type
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.VariantBase.Is``1">
+            <summary>
+            Check if the Variant is of type T
+            </summary>
+            <typeparam name="T">The type you want to check against</typeparam>
+            <returns>True if the variant is of type T</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.VariantBase.Get``1">
+            <summary>
+            Get the value of the variant as Type T<br/>
+            Throws <see cref="T:System.InvalidCastException"/> when the Type T is not the type of the variant
+            </summary>
+            <typeparam name="T">The type you want the value as</typeparam>
+            <returns>The value of the Variant as Type T</returns>
+            <exception cref="T:System.InvalidCastException"></exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.VariantBase.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.VariantBase.Equals(System.Object)">
+            <summary>
+            Check if an object is equal to the variant
+            </summary>
+            <param name="obj">The object you want to check</param>
+            <returns>True if the object is equal to the variant</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Types.VariantBase.GetHashCode">
+            <summary>
+            Get the Hash Code of the Variant
+            </summary>
+            <returns>The Hash Code of the Variant</returns>
+        </member>
+    </members>
+</doc>
