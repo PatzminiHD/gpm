@@ -1256,7 +1256,7 @@
         </member>
         <member name="M:PatzminiHD.CSLib.Settings.Base.IsGreaterVersion(System.String,System.String)">
             <summary>
-            Compares two version strings in the format "vX.Y.Z" and returns true if v1 is greater than v2
+            Compares two version strings in the format "vX.Y.Z" (the 'v' at the start can be omitted) and returns true if v1 is greater than v2
             </summary>
             <param name="v1">Version string 1</param>
             <param name="v2">Version string 2</param>
