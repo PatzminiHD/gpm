@@ -11,6 +11,9 @@ namespace gpm
     {
         public class UpdateSettings
         {
+            public string? selfRepoOwner;
+            public string? selfRepoName;
+            public string? selfLocalDirectoryPath;
             public List<(string name, string githubRepoOwner, string githubRepo, string localDirectoryPath)>? updateApplications;
             public string? versionTrackerFileName;
             public string? tagVersionSeperator;
@@ -22,17 +25,20 @@ namespace gpm
         public AppSettings()
         {
             ApplicationName = "gpm";
-            ApplicationVersion = "v0.2.0";
+            ApplicationVersion = "v1.0.0";
 
             updateSettings = new UpdateSettings()
             {
+                selfRepoOwner = "PatzminiHD",
+                selfRepoName = "gpm",
+                selfLocalDirectoryPath = "C:\\Program Files\\PatzminiHD\\gpm\\",
                 updateApplications = new()
                 {
                     ("PatzminiHD.CSLib", "PatzminiHD", "PatzminiHD.CSLib", "E:\\Projects\\Programming\\CSharp\\gpm\\gpm\\lib\\")
                 },
                 versionTrackerFileName = "CurrentVersion.txt",
                 tagVersionSeperator = "/",
-                fileVersionSeperator= "_",
+                fileVersionSeperator = "_",
             };
         }
     }

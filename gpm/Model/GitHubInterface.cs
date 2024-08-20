@@ -77,7 +77,7 @@ namespace gpm.Model
 
 
                         foreach(var file in Directory.GetFiles(localDirectory))
-                            File.Move(file, Path.Combine(backupDirectory, file));
+                            File.Move(file, Path.Combine(backupDirectory, file.Split(Path.DirectorySeparatorChar).Last()));
 
                         
                     }
@@ -128,7 +128,7 @@ namespace gpm.Model
             if (!name.Contains(MainModel.appSettings.updateSettings.fileVersionSeperator))
                 throw new Exception($"{nameof(name)} does not contain a {nameof(AppSettings.UpdateSettings.fileVersionSeperator)}");
 
-            return name.Split(MainModel.appSettings.updateSettings.fileVersionSeperator).Last();
+            return name.Split(MainModel.appSettings.updateSettings.fileVersionSeperator).Last().Split('.' + name.Split('.').Last()).First();
         }
 
         public static string GetAssetNameWithoutVersion(string assetName)
