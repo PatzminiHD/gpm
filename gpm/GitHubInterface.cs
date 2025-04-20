@@ -81,6 +81,12 @@ namespace gpm
                 string localFileName = Path.Combine(localDirectory, GetAssetNameWithoutVersion(asset.name));
                 if (File.Exists(localFileName))
                 {
+                    string localVersion;
+                    if (release.Value.LocalVersion == null)
+                        localVersion = "v0.0.0";
+                    else
+                        localVersion = release.Value.LocalVersion;
+
                     if (deleteOldVersion)
                         File.Delete(localFileName);
                     else if(repoOwner == Program.appSettings.updateSettings.selfRepoOwner && repo == Program.appSettings.updateSettings.selfRepoName)
@@ -88,12 +94,12 @@ namespace gpm
                         // ===========
                         // Self-update
                         // ===========
-                        string backupVersion = localFileName + ".old_" + GetVersionFromAssetName(asset.name);
+                        string backupVersion = localFileName + ".old_" + localVersion;
                         File.Move(localFileName, backupVersion);
                     }
                     else
                     {
-                        string backupDirectory = Path.Combine(localDirectory, GetVersionFromAssetName(asset.name));
+                        string backupDirectory = Path.Combine(localDirectory, localVersion);
                         if (!Directory.Exists(backupDirectory))
                             Directory.CreateDirectory(backupDirectory);
 
