@@ -151,6 +151,14 @@
             <param name="value">The value to check</param>
             <returns>True if the value is even, otherwise false</returns>
         </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.Number.Swap``1(``0@,``0@)">
+            <summary>
+            Swap 2 numbers
+            </summary>
+            <typeparam name="T">The type of the number</typeparam>
+            <param name="n0">Number 0</param>
+            <param name="n1">Number 1</param>
+        </member>
         <member name="T:PatzminiHD.CSLib.ExtensionMethods.String">
             <summary>
             Contains extension Methods for the String type
@@ -163,6 +171,38 @@
             <param name="a">The string to search</param>
             <param name="charToSearch">The character to search for</param>
             <returns>How often the character exists in the string</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.String.Interpolate(System.String,System.String)">
+            <summary>
+            Return a new string, where "{0}" is replaced with <paramref name="arg"/>
+            </summary>
+            <param name="s"></param>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.String.Interpolate``1(System.String,``0)">
+            <summary>
+            Return a new string, where "{0}" is replaced with <paramref name="arg"/>
+            </summary>
+            <param name="s"></param>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.String.Interpolate(System.String,System.String[])">
+            <summary>
+            Return a new string, where "{0}", "{1}" and so on are replaced with the contents of <paramref name="args"/>
+            </summary>
+            <param name="s"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.String.Interpolate``1(System.String,``0[])">
+            <summary>
+            Return a new string, where "{0}", "{1}" and so on are replaced with the contents of <paramref name="args"/>
+            </summary>
+            <param name="s"></param>
+            <param name="args"></param>
+            <returns></returns>
         </member>
         <member name="T:PatzminiHD.CSLib.ExtensionMethods.TimeSpanExtension">
             <summary>
@@ -182,6 +222,71 @@
             </summary>
             <param name="timeSpan"></param>
             <param name="formatString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.ExtensionMethods.Vectors">
+            <summary>
+            Contains Extension Methods for Vectors
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ExtensionMethods.Vectors.TransitionTo(System.Numerics.Vector3@,System.Numerics.Vector3,System.Double,System.Single,System.Single)">
+            <summary>
+            Smoothly transition a <see cref="T:System.Numerics.Vector3"/> from one Position to another<br/>
+            When used as an Extension Method, the Vector is modified in place
+            </summary>
+            <param name="startPosition">The Start vector</param>
+            <param name="targetPosition">The target vector</param>
+            <param name="deltaTime">The delta time, used for animations</param>
+            <param name="speed">The speed at which the transition should occur, default value is 1.0f</param>
+            <param name="snapDistance">The difference between the start and target position at which the positions is just snapped</param>
+            <returns>True if the Transition has finished, otherwise false</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.FileSystem.Compression.GZip">
+            <summary>
+            Contains Methods for Compressing and Decompressing gzipped streams and files
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.FileSystem.Compression.GZip.Decompress(System.IO.Stream)">
+            <summary>
+            Decompress a gzipped stream
+            </summary>
+            <param name="stream">A gzip compressed stream</param>
+            <returns>An ungzipped stream</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.FileSystem.Compression.GZip.Decompress(System.String,System.String,System.Boolean)">
+            <summary>
+            Decompress a gzipped file to a new file
+            </summary>
+            <param name="filename">The path to the gzipped file</param>
+            <param name="newFileName">The path of the new ungzipped file</param>
+            <param name="overwrite">True if you want to overwrite a file if it exists at newFileName, otherwise false</param>
+            <exception cref="T:System.IO.FileNotFoundException">If the file in filename was not found</exception>
+            <exception cref="T:System.Exception">If a file at newFileName already exists, but overwriting was not enabled</exception>
+        </member>
+        <member name="T:PatzminiHD.CSLib.FileSystem.Directory">
+            <summary>
+            Contains usefuls Methods for handling directories
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.FileSystem.Directory.GetAllFiles(System.String,System.Int32)">
+            <summary>
+            Get all files in a given base directory. Optionally specify how deep subdirectories should be searched
+            </summary>
+            <param name="baseDirectory">The path to the base directory</param>
+            <param name="sublevels">How many sublevels deep to search. 0 means to only search for files in the base directory<br/>
+                                    Any number less then 0 means no limit.
+            </param>
+            <returns>A List of all found files</returns>
+            <exception cref="T:System.IO.DirectoryNotFoundException">If a directory could not be found</exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.FileSystem.Directory.GetAllFilesWhere(System.String,System.Text.RegularExpressions.Regex,System.Int32)">
+            <summary>
+            Get all files in a given base directory where the filename matches a regex. Optionally specify how deep subdirectories should be searched
+            </summary>
+            <param name="baseDirectory">The path to the base directory</param>
+            <param name="rule">The regex to which the filenames have to adhere</param>
+            <param name="sublevels">How many sublevels deep to search. 0 means to only search for files in the base directory<br/>
+                                    Any number less then 0 means no limit.</param>
             <returns></returns>
         </member>
         <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.BufferObject`1">
@@ -218,6 +323,90 @@
             Dispose used resources
             </summary>
         </member>
+        <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera">
+             <summary>
+             Abstraction for a Camera<br/><br/>
+            
+             The code in this class was originally taken from the Silk.NET project (https://github.com/dotnet/Silk.NET)<br/>
+             Silk.NET is licensed under the MIT License:<br/><br/>
+            
+            Copyright (c) 2019-2020 Ultz Limited<br/>
+            Copyright (c) 2021- .NET Foundation and Contributors<br/><br/>
+            
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+            
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+             </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.Position">
+            <summary> Position of the camera </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.Front">
+            <summary> Vector Pointing to the front of the camera </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.Up">
+            <summary> Vector pointing upwards from the camera </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.AspectRatio">
+            <summary> Aspect ratio of the screen </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.Yaw">
+            <summary> Yaw of the camera </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.Pitch">
+            <summary> Pitch of the camera </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.IsMovingToPosition">
+            <summary> True if the <see cref="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.MoveToPosition(System.Double,System.Numerics.Vector3,System.Single,System.Single)"/> Method has been called and the camera
+                      has not yet fully returned to center </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera._zoom">
+            <summary> Zoom of the camera </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+            <summary>
+            Create a new camera object
+            </summary>
+            <param name="position">Position of the camera</param>
+            <param name="front">Vector pointing to the front of the camera</param>
+            <param name="up">Vector pointing upwards from the camera</param>
+            <param name="aspectRatio">Aspect ratio of the screen</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.ModifyZoom(System.Single)">
+            <summary>
+            Modify the zoom of the camera
+            </summary>
+            <param name="zoomAmount">The amount of zoom</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.ModifyDirection(System.Single,System.Single)">
+            <summary>
+            Modify the direction the camera is looking in
+            </summary>
+            <param name="xOffset">How much to change the Yaw</param>
+            <param name="yOffset">How much to change the Pitch</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.GetViewMatrix">
+            <summary>
+            Get the View Matrix
+            </summary>
+            <returns>The View Matrix</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.GetProjectionMatrix">
+            <summary>
+            Get the Projection Matrix
+            </summary>
+            <returns>The Projection Matrix</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.MoveToPosition(System.Double,System.Numerics.Vector3,System.Single,System.Single)">
+            <summary>
+            Move the camera smoothly to a target position. Needs to be called in a Update function until <see cref="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Camera.IsMovingToPosition"/> is false
+            </summary>
+            <param name="deltaTime">The delta time of the Update function</param>
+            <param name="targetPosition">The target position of the movement</param>
+            <param name="speed">How fast the camera should move</param>
+            <param name="snapDistance"></param>
+            <returns></returns>
+        </member>
         <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader">
              <summary>
              Abstraction for a Shader<br/><br/>
@@ -246,6 +435,22 @@
             <summary>
             Use the shader
             </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader.SetUniform(System.String,System.Numerics.Matrix4x4)">
+            <summary>
+            Uniforms are properties that applies to the entire geometry
+            </summary>
+            <param name="name">Name of the uniform</param>
+            <param name="value"></param>
+            <exception cref="T:System.Exception">When the uniform is not found to the shader</exception>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader.SetUniform(System.String,System.Numerics.Vector3)">
+            <summary>
+            Uniforms are properties that applies to the entire geometry
+            </summary>
+            <param name="name">Name of the uniform</param>
+            <param name="value"></param>
+            <exception cref="T:System.Exception">When the uniform is not found to the shader</exception>
         </member>
         <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Shader.SetUniform(System.String,System.Int32)">
             <summary>
@@ -310,6 +515,41 @@
             Dispose used resources
             </summary>
         </member>
+        <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Transform">
+             <summary>
+             Abstraction for a Transformation<br/><br/>
+            
+             The code in this class was originally taken from the Silk.NET project (https://github.com/dotnet/Silk.NET)<br/>
+             Silk.NET is licensed under the MIT License:<br/><br/>
+            
+            Copyright (c) 2019-2020 Ultz Limited<br/>
+            Copyright (c) 2021- .NET Foundation and Contributors<br/><br/>
+            
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+            
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+             </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Transform.Position">
+            <summary>
+            Position Transformation
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Transform.Scale">
+            <summary>
+            Scale Transformation
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Transform.Rotation">
+            <summary>
+            Rotation Transformation
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.Transform.ViewMatrix">
+            <summary>
+            View Matrix
+            </summary>
+        </member>
         <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.VertexArrayObject`2">
              <summary>
              The vertex array object abstraction<br/><br/>
@@ -351,6 +591,23 @@
         <member name="M:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.VertexArrayObject`2.Dispose">
             <summary>
             Dispose used resources
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Graphics.STL.StlFile">
+            <summary>
+            This class contains Methods for reading and writing STL files
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Graphics.STL.StlFile.Read(System.String)">
+            <summary>
+            Read a STL file from a stream
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Graphics.STL.StlObject">
+            <summary>
+            Represents a STL File in memory
             </summary>
         </member>
         <member name="T:PatzminiHD.CSLib.Info">
@@ -541,6 +798,39 @@
             <param name="defaultResponse">The deafult response to the question</param>
             <returns>True if the answer was yes, otherwise false</returns>
         </member>
+        <member name="T:PatzminiHD.CSLib.Math.Conversion">
+            <summary>
+            Class containing Methods for converting between units
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Conversion.DegreesToRadians(System.Double)">
+            <summary>
+            Convert degrees to radians
+            </summary>
+            <param name="degrees">The degrees you want to convert</param>
+            <returns>Input converted to radians</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Conversion.DegreesToRadians(System.Single)">
+            <summary>
+            Convert degrees to radians
+            </summary>
+            <param name="degrees">The degrees you want to convert</param>
+            <returns>Input converted to radians</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Conversion.RadiansToDegrees(System.Double)">
+            <summary>
+            Convert radians to degrees
+            </summary>
+            <param name="radians">The radians you want to convert</param>
+            <returns>Input converted to degrees</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Conversion.RadiansToDegrees(System.Single)">
+            <summary>
+            Convert radians to degrees
+            </summary>
+            <param name="radians">The radians you want to convert</param>
+            <returns>Input converted to degrees</returns>
+        </member>
         <member name="T:PatzminiHD.CSLib.Math.Statistics">
             <summary>
             This class contains Methods for statistical analysis
@@ -678,6 +968,12 @@
             An event that fires every time a download failes
             </summary>
         </member>
+        <member name="M:PatzminiHD.CSLib.Network.FileDownloader.#ctor(System.Collections.Generic.List{System.ValueTuple{System.String,System.String}})">
+            <summary>
+            Create a new instance of the FileDownloader object
+            </summary>
+            <param name="customHeaders">Optional, custom headers added to each download request</param>
+        </member>
         <member name="M:PatzminiHD.CSLib.Network.FileDownloader.Download(System.String,System.String,System.Boolean,System.Boolean)">
             <summary>
             Download a file from a given url to a given Path
@@ -754,6 +1050,14 @@
             <param name="values">The values of the request</param>
             <returns>The result of the request</returns>
         </member>
+        <member name="M:PatzminiHD.CSLib.Network.Http.PostRequest(System.String,System.String)">
+            <summary>
+            Send a HTTP Post request to a specified url with specified data
+            </summary>
+            <param name="url">The url or ip address of the server</param>
+            <param name="json">The JSON string of the request</param>
+            <returns>The result of the request</returns>
+        </member>
         <member name="M:PatzminiHD.CSLib.Network.Http.GetRequest(System.String)">
             <summary>
             Send a HTTP Get request to a specified url
@@ -767,6 +1071,19 @@
             </summary>
             <param name="httpRequestMessage">The request message to send to the server</param>
             <returns>The result of the request</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.Ping">
+            <summary>
+            Contains methods for sending pings
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.Ping.SendPing(System.String,System.Int32)">
+            <summary>
+            Send ping to an IP Address
+            </summary>
+            <param name="ipAddress">The IP Address of the device</param>
+            <param name="timeout">The timeout in milliseconds</param>
+            <returns>True if the device responded to the ping, otherwise false</returns>
         </member>
         <member name="T:PatzminiHD.CSLib.Network.SpecificApps.GitHub">
             <summary>
@@ -825,6 +1142,76 @@
             <param name="accessToken">The access token if the repository is private</param>
             <returns>A <see cref="T:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease"/> if getting the latest release was successful,<br/>
             Otherwise a string containing the reason of failure</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.SpecificApps.TelegramBot">
+            <summary>
+            Represents a Telegram Bot
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.TelegramBot.#ctor(System.String,Telegram.Bot.Types.ReplyMarkups.ReplyKeyboardMarkup,System.Collections.Generic.List{System.ValueTuple{System.String,System.Func{System.String,System.Int64,Telegram.Bot.TelegramBotClient,System.Threading.Tasks.Task{System.ValueTuple{System.String,Telegram.Bot.Types.Enums.ParseMode}}}}},System.Func{System.String,System.Int64,Telegram.Bot.TelegramBotClient,System.Threading.Tasks.Task{System.ValueTuple{System.String,Telegram.Bot.Types.Enums.ParseMode}}},System.Func{Telegram.Bot.ITelegramBotClient,Telegram.Bot.Types.CallbackQuery,System.Threading.Tasks.Task},System.Collections.Generic.List{System.Int64},System.Collections.Generic.List{System.Int64})">
+            <summary> Initialise a new Telegram Bot object </summary>
+            <param name="token">The token of the bot</param>
+            <param name="replyKeyboardMarkup">The main Keyboard of the Bot<br/>Is sent to the user when they send the '/start' command</param>
+            <param name="commandActions">Actions to be taken when the bot receives commands (messages starting with a '/')<br/>
+                    The specified command is given as a string starting with '/'
+                    Each command action is am async method with the parameters:<br/>
+                    - string: the full message of the user<br/>
+                    - long: the user ID<br/>
+                    - <see cref="T:Telegram.Bot.TelegramBotClient"/>: the bot object<br/>
+                    The command action can optionally return a string that is sent to the user as a message</param>
+            <param name="allowedUsers">List of user IDs that are allowed to use the bot. null to allow every user</param>
+            <param name="unknownCommandAction">Is called when the received command has no action defined in <paramref name="commandActions"/></param>
+            <param name="callbackQueryAction">Action that is called when a callback queary is received</param>
+            <param name="informUsers">List of users that should be informed of events (bot starting, invalid users trying to access the bot...)</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.TelegramBot.Start(System.Boolean)">
+            <summary>
+            Start the bot
+            </summary>
+            <param name="informUsers">True to send a message to the informUsers, otherwise false</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.TelegramBot.Stop(System.Boolean)">
+            <summary>
+            Stop the bot
+            </summary>
+            <param name="informUsers">True to send a message to the informUsers, otherwise false</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.TelegramBot.Restart(System.Boolean)">
+            <summary>
+            Restart the bot
+            </summary>
+            <param name="informUsers">True to send a message to the informUsers, otherwise false</param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.TelegramBot.HandleUpdate(Telegram.Bot.ITelegramBotClient,Telegram.Bot.Types.Update,System.Threading.CancellationToken)">
+            <summary>
+            Is called each time the bot receives a message
+            </summary>
+            <param name="bot"></param>
+            <param name="update"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.TelegramBot.HandleError(Telegram.Bot.ITelegramBotClient,System.Exception,System.Threading.CancellationToken)">
+            <summary>
+            Is called when an error occures in the bot
+            </summary>
+            <param name="_"></param>
+            <param name="exception"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.SpecificApps.WakeOnLan">
+            <summary>
+            Contains methods for sending a Wake-on-Lan package
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.WakeOnLan.Send(System.String)">
+            <summary>
+            Send a Wake-on-Lan package to a mac address
+            </summary>
+            <param name="macAddress">The MAC-Address of the device</param>
+            <returns>null if the request was sent successfully, otherwise the exception that occured</returns>
         </member>
         <member name="T:PatzminiHD.CSLib.Output.Console.CellBase">
             <summary>
@@ -1230,6 +1617,202 @@
             Draw all cells in the Row
             </summary>
         </member>
+        <member name="T:PatzminiHD.CSLib.Output.Logging">
+            <summary>
+            Contains Methods for logging purposes<br/>
+            Defaults: Log everything to the console, nothing to a file
+            </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Logging.FileLogLevel">
+            <summary> Log entries of this and higher levels are logged to the logfile<br/>
+                      A value of null means that nothing is logged to the logfile</summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Logging.ConsoleLogLevel">
+            <summary> Log entries of this and higher levels are logged to the console<br/>
+                      A value of null means that nothing is logged to the console</summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Output.Logging.LogFilePath">
+            <summary> The path of the logfile.
+                      If set to null, nothing will be logged, regardless of <see cref="P:PatzminiHD.CSLib.Output.Logging.FileLogLevel"/> </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Output.Logging.LoggingLevel">
+            <summary> Specifies the logging level </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.Verbose">
+            <summary> Logging data that is very verbose </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.Info">
+            <summary> Logging data that only serves as information </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.Warning">
+            <summary> Logging data that contains a warning, but no errors </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.ERROR">
+            <summary> Logging data that contains errors </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.Mandatory">
+            <summary> Logging data that should always be logged </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.Init(System.Nullable{PatzminiHD.CSLib.Output.Logging.LoggingLevel},System.Nullable{PatzminiHD.CSLib.Output.Logging.LoggingLevel},System.String)">
+            <summary>
+            Initialise the logging.<br/>
+            It is recommended that you also call the CullLogs Method<br/>
+            (<see cref="M:PatzminiHD.CSLib.Output.Logging.CullLogs(System.Int32)"/> or <see cref="M:PatzminiHD.CSLib.Output.Logging.CullLogs(System.DateTime)"/>)
+            </summary>
+            <param name="consoleLogLevel">The lowest level of log that will be logged to the console</param>
+            <param name="fileLogLevel">The lowest level of log that will be logged to the log file<br/>
+                                       (Is only logged when <see cref="P:PatzminiHD.CSLib.Output.Logging.LogFilePath"/> is also valid)</param>
+            <param name="logFilePath">The path of the log file<br/>
+                                      (Logs are only written to the file if <see cref="P:PatzminiHD.CSLib.Output.Logging.FileLogLevel"/> is also set)</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.CullLogs(System.DateTime)">
+            <summary>
+            Cull all logs that are older than <paramref name="oldestLogToKeep"/>
+            </summary>
+            <param name="oldestLogToKeep">The oldest log to keep</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.CompressPreviousLogs">
+            <summary>
+            Compress Previous logs using gzip
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.CullLogs(System.Int32)">
+            <summary>
+            Cull all logs, keeping only the latest <paramref name="numOfLogsToKeep"/>
+            </summary>
+            <param name="numOfLogsToKeep">How many logs to keep</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.LogVerbose(System.String,System.String,System.String)">
+            <summary>
+            Log a message with <see cref="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.Verbose"/>
+            </summary>
+            <param name="message">The message to log</param>
+            <param name="subsystem">Optional: The name of a subsystem where the log originated from,
+                                    for easier tracing</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.LogInfo(System.String,System.String,System.String)">
+            <summary>
+            Log a message with <see cref="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.Info"/>
+            </summary>
+            <param name="message">The message to log</param>
+            <param name="subsystem">Optional: The name of a subsystem where the log originated from,
+                                    for easier tracing</param>
+            <param name="callerName">Optional: The name of the calling function. Should be filled in automatically</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.LogWarning(System.String,System.String,System.String)">
+            <summary>
+            Log a message with <see cref="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.Warning"/>
+            </summary>
+            <param name="message">The message to log</param>
+            <param name="subsystem">Optional: The name of a subsystem where the log originated from,
+                                    for easier tracing</param>
+            <param name="callerName">Optional: The name of the calling function. Should be filled in automatically</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.LogError(System.String,System.String,System.String)">
+            <summary>
+            Log a message with <see cref="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.ERROR"/>
+            </summary>
+            <param name="message">The message to log</param>
+            <param name="subsystem">Optional: The name of a subsystem where the log originated from,
+                                    for easier tracing</param>
+            <param name="callerName">Optional: The name of the calling function. Should be filled in automatically</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.LogMandatory(System.String,System.String,System.String)">
+            <summary>
+            Log a message with <see cref="F:PatzminiHD.CSLib.Output.Logging.LoggingLevel.Mandatory"/>
+            </summary>
+            <param name="message">The message to log</param>
+            <param name="subsystem">Optional: The name of a subsystem where the log originated from,
+                                    for easier tracing</param>
+            <param name="callerName">Optional: The name of the calling function. Should be filled in automatically</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.Log(System.String,PatzminiHD.CSLib.Output.Logging.LoggingLevel,System.String,System.String)">
+            <summary>
+            Add a message to the log, with a specified loglevel
+            </summary>
+            <param name="message">The message to log</param>
+            <param name="logLevel">The loglevel</param>
+            <param name="subsystem">Optional: The name of a subsystem where the log originated from,
+                                    for easier tracing</param>
+            <param name="callerName">Optional: The name of the calling function. Should be filled in automatically</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.GetExistingLogFiles">
+            <summary>
+            Get a list of all existing log files, including the current logfile and all compressed logfiles
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Logging.CompressToTarGz(System.String)">
+            <summary>
+            Compress all previous logfiles to a tar.gz archive
+            </summary>
+            <param name="tarFileName">The name of the tar file<br/>(Date and time of the newest )</param>
+            <returns>The name of the created tar file</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.ProgramInterfaces.FFmpeg">
+            <summary>
+            Contains Methods for interacting with FFmpeg
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ProgramInterfaces.FFmpeg.ReencodeVideo(System.String,System.String,System.UInt32,System.UInt32,System.Boolean,System.Boolean)">
+            <summary>
+            Reencode a video file to AV1 using ffmpeg/libsvtav1
+            </summary>
+            <param name="filename">The file you want to reencode</param>
+            <param name="newFileName">The output filepath</param>
+            <param name="quality">The quality ("crf" parameter) of the encoding:<br/>
+            The CRF value can be from 0–63. Lower values mean better quality and greater file size. 0 means lossless. A CRF value of 23 yields a quality level corresponding to CRF 19 for x264, which would be considered visually lossless.</param>
+            <param name="cpu_used">The cpu-used parameter of ffmpeg<br/>
+            -cpu-used sets how efficient the compression will be. Default is 1. Lower values mean slower encoding with better quality, and vice-versa. Valid values are from 0 to 8 inclusive</param>
+            <param name="row_mt">True to enable multi-threading<br/>
+            -row-mt 1 enables row-based multi-threading which maximizes CPU usage. To enable fast decoding performance, also add tiles (i.e. -tiles 4x1 or -tiles 2x2 for 4 tiles). Enabling row-mt is only faster when the CPU has more threads than the number of encoded tiles</param>
+            <param name="redirectOutputToConsole">True when you want to redirect the ffmpeg output to the console; otherwise false</param>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.ProgramInterfaces.FFprobe">
+            <summary>
+            Contains Methods for interacting with FFprobe
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ProgramInterfaces.FFprobe.IsVideoFile(System.String)">
+            <summary>
+            Check if a file is a video file
+            </summary>
+            <param name="filePath">The path of the file to check</param>
+            <returns>True if the file is a video file, otherwise false</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ProgramInterfaces.FFprobe.GetCodecName(System.String)">
+            <summary>
+            Get the codec name of a video file
+            </summary>
+            <param name="filePath">The path of the file to check</param>
+            <returns>The codec of the video, null if the file is not a video file</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.ProgramInterfaces.Generic">
+            <summary>
+            Contains Methods to start and interact with processes
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ProgramInterfaces.Generic.StartProcess(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Start a process
+            </summary>
+            <param name="fileName">The name of the process</param>
+            <param name="arguments">The arguments that should be given to the process</param>
+            <param name="useShellExecute">Wether to use shell execute</param>
+            <param name="redirectOutput">Wether to redirect the output to the return values of this method</param>
+            <param name="redirectOutputToConsole">Wether to redirect the output to the console</param>
+            <param name="timeoutMillis">How long to wait for the process to exit in milliseconds<br/>to wait indefinitely, leave default or input a negative number</param>
+            <returns>The process output if useShellExecute is false and redirectStandardOutput is true</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.ProgramInterfaces.Generic.ProgramExists(System.String)">
+            <summary>
+            Check if a program exists by trying to start it<br/>
+            (Intended to be used for linux programs e.g. 'uptime')
+            </summary>
+            <param name="filename">The name (or name and path) of the program</param>
+            <returns>True if the specified program could be started, otherwise false</returns>
+        </member>
         <member name="T:PatzminiHD.CSLib.Settings.Base">
             <summary>
             Base for saving Application Settings. This class is abstract
@@ -1462,6 +2045,127 @@
             Get the Hash Code of the Variant
             </summary>
             <returns>The Hash Code of the Variant</returns>
+        </member>
+        <member name="T:GCode">
+            <summary> Represents a GCode file </summary>
+        </member>
+        <member name="M:GCode.#ctor(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary> Initialise a GCode object </summary>
+            <param name="xMin">The minimum value of the X coordinate</param>
+            <param name="yMin">The minimum value of the Y coordinate</param>
+            <param name="xMax">The maximum value of the X coordinate</param>
+            <param name="yMax">The maximum value of the Y coordinate</param>
+            <param name="hotendTemp">The Temperature of the hotend (-1 to disable heating)</param>
+            <param name="bedTemp">The Temperature of the bed (-1 to disable heating)</param>
+        </member>
+        <member name="M:GCode.#ctor">
+            <summary>
+            Initialise a GCode object
+            </summary>
+        </member>
+        <member name="M:GCode.Init(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary> Homes all axes, optionally start heating hotend and bed </summary>
+        </member>
+        <member name="M:GCode.Init(System.Int32,System.Int32)">
+            <summary> Homes all axes, optionally start heating hotend and bed </summary>
+        </member>
+        <member name="M:GCode.HomeAxes">
+            <summary> Home all axes </summary>
+        </member>
+        <member name="M:GCode.SetHeat(System.Int32,System.Int32)">
+            <summary> Sets the heat of the hotend and bed in °C. -1 to not start heating </summary>
+            <param name="hotendTemp"> in °C </param>
+            <param name="bedTemp"> in °C </param>
+        </member>
+        <member name="M:GCode.WaitHeat">
+            <summary> Wait for the heat set in <see cref="M:GCode.SetHeat(System.Int32,System.Int32)"/> or <see cref="M:GCode.Init(System.Int32,System.Int32)"/> to be reached </summary>
+        </member>
+        <member name="M:GCode.SetSpeed(System.Int32)">
+            <summary> Set the movement speed </summary>
+        </member>
+        <member name="M:GCode.MoveX(System.Double)">
+            <summary> Move to a specified X location </summary>
+        </member>
+        <member name="M:GCode.MoveY(System.Double)">
+            <summary> Move to a specified Y location </summary>
+        </member>
+        <member name="M:GCode.MoveZ(System.Double)">
+            <summary> Move to a specified Z location </summary>
+        </member>
+        <member name="M:GCode.MoveXY(System.Double,System.Double)">
+            <summary> Move to a specified X, Y location </summary>
+        </member>
+        <member name="M:GCode.MoveYZ(System.Double,System.Double)">
+            <summary> Move to a specified Y, Z location </summary>
+        </member>
+        <member name="M:GCode.MoveXZ(System.Double,System.Double)">
+            <summary> Move to a specified X, Z location </summary>
+        </member>
+        <member name="M:GCode.MoveXYZ(System.Double,System.Double,System.Double)">
+            <summary> Move to a specified X, Y, Z location </summary>
+        </member>
+        <member name="M:GCode.SetLCDMessage(System.String)">
+            <summary> Write a message to the LCD Screen </summary>
+        </member>
+        <member name="M:GCode.PausePrint(System.String)">
+            <summary> Pause the print </summary>
+        </member>
+        <member name="M:GCode.AddCustom(System.String)">
+            <summary> Add custom gcode </summary>
+        </member>
+        <member name="M:GCode.WriteToFile(System.String)">
+            <summary> Write all gcode to a file </summary>
+            <param name="filename">The path and name of the output file</param>
+        </member>
+        <member name="T:GCode.GCodeFragments">
+            <summary>
+            Contains GCode strings
+            </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.HOME_AXES">
+            <summary> Home all axis </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.G0_SET_MOVESPEED">
+            <summary> G0 F{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.G0_MOVE_X">
+            <summary> G0 X{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.G0_MOVE_Y">
+            <summary> G0 Y{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.G0_MOVE_Z">
+            <summary> G0 Z{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.G0_MOVE_XY">
+            <summary> G0 X{0} Y{1} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.G0_MOVE_YZ">
+            <summary> G0 Y{0} Z{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.G0_MOVE_XZ">
+            <summary> G0 X{0} Z{1} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.G0_MOVE_XYZ">
+            <summary> G0 X{0} Y{1} Z{2} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.SET_HOTEND_TEMP">
+            <summary> M104 S{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.SET_BED_TEMP">
+            <summary> M140 S{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.WAIT_HOTEND_TEMP">
+            <summary> M109 S{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.WAIT_BED_TEMP">
+            <summary> M190 S{0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.SET_LCD_MESSAGE">
+            <summary> M117 {0} </summary>
+        </member>
+        <member name="F:GCode.GCodeFragments.PAUSE_PRINT">
+            <summary> M0 {0} </summary>
         </member>
     </members>
 </doc>
