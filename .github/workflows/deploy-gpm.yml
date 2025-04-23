@@ -15,16 +15,36 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Build the program
+      - name: Build the program (windows)
         run: dotnet publish gpm/gpm.csproj -c Release -r win-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true --self-contained true
 
-      - name: Rename the executable file
-        run: mv gpm/bin/Release/net8.0/win-x64/publish/gpm.exe gpm/bin/Release/net8.0/win-x64/publish/${tag/\//_}.exe
+      - name: Build the program (linux)
+        run: dotnet publish gpm/gpm.csproj -c Release -r linux-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true --self-contained true
+
+      - name: Create release body file
+        run: echo "SHA512 hashes of the files:" > realeaseBody.txt
+
+      - name: Rename the executable file (windows)
+        run: mv gpm/bin/Release/net8.0/win-x64/publish/gpm.exe gpm/bin/Release/net8.0/win-x64/publish/windows_${tag/\//_}.exe
         env:
           tag: ${{ github.ref_name }}
 
+      - name: Rename the executable file (linux)
+        run: mv gpm/bin/Release/net8.0/linux-x64/publish/gpm gpm/bin/Release/net8.0/linux-x64/publish/linux_${tag/\//_}
+        env:
+          tag: ${{ github.ref_name }}
+
+              
+      - name: Calculate SHA512 hash (windows)
+        run: echo "windows_${tag/\//_}.exe=$(sha512sum gpm/bin/Release/net8.0/win-x64/publish/gpm.exe | cut -d ' ' -f1)" >> realeaseBody.txt
+
+      - name: Calculate SHA512 hash (linux)
+        run: echo "linux_${tag/\//_}=$(sha512sum gpm/bin/Release/net8.0/win-x64/publish/gpm.exe | cut -d ' ' -f1)" >> realeaseBody.txt
+
+
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "gpm/bin/Release/net8.0/win-x64/publish/*.exe"
+          artifacts: "gpm/bin/Release/net8.0/win-x64/publish/*.exe,gpm/bin/Release/net8.0/linux-x64/publish/linux*"
           prerelease: ${{ contains(github.ref_name, '-') }} #Set as prerelease if the tag name contains '-' (e.g. gpm/v0.0.1-dev)
+          bodyFile: "realeaseBody.txt"
           
