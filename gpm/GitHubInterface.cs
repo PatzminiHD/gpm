@@ -120,6 +120,17 @@ namespace gpm
                 fileDownloader.DownloadProgess += FileDownloader_DownloadProgess;
                 var downloadStatus = fileDownloader.Download(asset.url, localFileName);
                 downloadStatus.Wait();
+
+                var remoteFileHash = GetHashFromReleaseBody(release.Value.GitHubRelease.body, asset.name);
+                if (remoteFileHash == null)
+                    Console.WriteLine("Hash has not specified by remote");
+                else
+                {
+                    if(!CheckFileHash(localFileName, remoteFileHash))
+                        return "File hash did not match!";
+                    else
+                        Console.WriteLine($"File hash matched!");
+                }
             }
 
             string versionTrackerFile = Path.Combine(localDirectory, Program.appSettings.updateSettings.versionTrackerFileName);
@@ -169,6 +180,21 @@ namespace gpm
                 throw new Exception($"{nameof(name)} does not contain a {nameof(AppSettings.UpdateSettings.fileVersionSeperator)}");
 
             return name.Split(Program.appSettings.updateSettings.fileVersionSeperator).Last().Split('.' + name.Split('.').Last()).First();
+        }
+
+        public static bool CheckFileHash(string filepath, string hash)
+        {
+            return PatzminiHD.CSLib.Math.Crypto.GetSHA512HashString(filepath) == hash;
+        }
+
+        public static string? GetHashFromReleaseBody(string releaseBody, string fileName)
+        {
+            foreach(string line in releaseBody.Split('\n'))
+            {
+                if(line.StartsWith(fileName) && line.Contains('='))
+                    return line.Substring(line.IndexOf('=')).Trim();
+            }
+            return null;
         }
 
         public static string GetAssetNameWithoutVersion(string assetName)
