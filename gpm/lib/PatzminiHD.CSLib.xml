@@ -289,6 +289,11 @@
                                     Any number less then 0 means no limit.</param>
             <returns></returns>
         </member>
+        <member name="T:PatzminiHD.CSLib.FileSystem.Files">
+            <summary>
+            Contains useful Methods for working with files
+            </summary>
+        </member>
         <member name="T:PatzminiHD.CSLib.Graphics.Silk.NET.Abstractions.BufferObject`1">
              <summary>
              Our buffer object abstraction.<br/><br/>
@@ -693,6 +698,25 @@
             <param name="defaultSelection"></param>
             <returns></returns>
         </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.FileFolderPicker">
+            <summary>
+            A class that implements a file or folder picker
+            </summary>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Input.Console.FileFolderPicker.PickAction">
+            <summary>
+            An enum containing options to specify what you want to pick
+            </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.FileFolderPicker.PickAction.FILE">
+            <summary> Indicates that the user should be able to pick file(s) </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.FileFolderPicker.PickAction.FOLDER">
+            <summary> Indicates that the user should be able to pick folder(s) </summary>
+        </member>
+        <member name="F:PatzminiHD.CSLib.Input.Console.FileFolderPicker.PickAction.BOTH">
+            <summary> Indicates that the user can pick both files and folders </summary>
+        </member>
         <member name="T:PatzminiHD.CSLib.Input.Console.MessageBox">
             <summary>
             Class containing members for showing MessageBoxes
@@ -830,6 +854,95 @@
             </summary>
             <param name="radians">The radians you want to convert</param>
             <returns>Input converted to degrees</returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Math.Crypto">
+            <summary>
+            Contains Crypto related methods, like for computing hashes
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetMD5Hash(System.Byte[])">
+            <summary>
+            Compute the MD5 Hash of a byte[]
+            </summary>
+            <param name="data">The data</param>
+            <returns>The MD5 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetMD5Hash(System.String)">
+            <summary>
+            Compute the MD5 Hash of a file
+            </summary>
+            <param name="filename">The path to the file</param>
+            <returns>The MD5 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetMD5HashString(System.Byte[])">
+            <summary>
+            Get the string representation of the MD5 Hash of a byte[] (all characters are lowercase)
+            </summary>
+            <param name="data">The data</param>
+            <returns>The string representation of the MD5 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetMD5HashString(System.String)">
+            <summary>
+            Get the string representation of the MD5 Hash of a file (all characters are lowercase)
+            </summary>
+            <param name="filename">The path to the file</param>
+            <returns>The string representation of the MD5 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetSHA256Hash(System.Byte[])">
+            <summary>
+            Compute the SHA256 Hash of a byte[]
+            </summary>
+            <param name="data">The data</param>
+            <returns>The SHA256 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetSHA256Hash(System.String)">
+            <summary>
+            Compute the SHA256 Hash of a file
+            </summary>
+            <param name="filename">The path to the file</param>
+            <returns>The SHA256 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetSHA256HashString(System.Byte[])">
+            <summary>
+            Get the string representation of the SHA256 Hash of a byte[] (all characters are lowercase)
+            </summary>
+            <param name="data">The data</param>
+            <returns>The string representation of the SHA256 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetSHA256HashString(System.String)">
+            <summary>
+            Get the string representation of the SHA256 Hash of a file (all characters are lowercase)
+            </summary>
+            <param name="filename">The path to the file</param>
+            <returns>The string representation of the SHA256 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetSHA512Hash(System.Byte[])">
+            <summary>
+            Compute the SHA512 Hash of a byte[]
+            </summary>
+            <param name="data">The data</param>
+            <returns>The SHA512 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetSHA512Hash(System.String)">
+            <summary>
+            Compute the SHA512 Hash of a file
+            </summary>
+            <param name="filename">The path to the file</param>
+            <returns>The SHA512 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetSHA512HashString(System.Byte[])">
+            <summary>
+            Get the string representation of the SHA512 Hash of a byte[] (all characters are lowercase)
+            </summary>
+            <param name="data">The data</param>
+            <returns>The string representation of the SHA512 Hash</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Math.Crypto.GetSHA512HashString(System.String)">
+            <summary>
+            Get the string representation of the SHA512 Hash of a file (all characters are lowercase)
+            </summary>
+            <param name="filename">The path to the file</param>
+            <returns>The string representation of the SHA512 Hash</returns>
         </member>
         <member name="T:PatzminiHD.CSLib.Math.Statistics">
             <summary>
@@ -1143,6 +1256,49 @@
             <returns>A <see cref="T:PatzminiHD.CSLib.Network.SpecificApps.GitHub.GitHubRelease"/> if getting the latest release was successful,<br/>
             Otherwise a string containing the reason of failure</returns>
         </member>
+        <member name="T:PatzminiHD.CSLib.Network.SpecificApps.PrivAPI">
+            <summary>
+            Contains Methods for Accessing API Endpoint in my Private API running in my home network
+            </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.PrivAPI.GetVersion">
+            <summary>
+            Get the version of the API
+            </summary>
+            <returns>The version of the API as a string in the fromat "v.#.#.#"</returns>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Network.SpecificApps.PrivAPI.GetCurrentPvData">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PatzminiHD.CSLib.Network.SpecificApps.PrivApiClasses.PvData">
+            <summary> Represents Data from the PV System at a specific time </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.SpecificApps.PrivApiClasses.PvData.timeStamp">
+            <summary> The TimeStamp when the data is from </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.SpecificApps.PrivApiClasses.PvData.powerPv">
+            <summary> How much power the SolarPanels are generating (in Watts) </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.SpecificApps.PrivApiClasses.PvData.powerBattery">
+            <summary> How much power goes to the battery (positive Values mean the battery is charged,
+            negative Values mean the battery is being discharged) (in Watts)</summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.SpecificApps.PrivApiClasses.PvData.powerGrid">
+            <summary> How much is goes to the grid (positive values mean power goes to the grid,
+            negative values mean power is being drawn from the grid) (in Watts) </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.SpecificApps.PrivApiClasses.PvData.powerLoad">
+            <summary> Honestly I'm not sure what is represents </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.SpecificApps.PrivApiClasses.PvData.batteryPercent">
+            <summary> The State of Charge (SOC) of the battery in Percent (0 to 100) </summary>
+        </member>
+        <member name="P:PatzminiHD.CSLib.Network.SpecificApps.PrivApiClasses.PvData.yieldToday">
+            <summary> How much power has been produced by the powerplant on this given day (in KiloWattHours (kWh)) </summary>
+        </member>
         <member name="T:PatzminiHD.CSLib.Network.SpecificApps.TelegramBot">
             <summary>
             Represents a Telegram Bot
@@ -1272,6 +1428,20 @@
             <summary>
             Reset the Color of the Console with respect to <see cref="P:PatzminiHD.CSLib.Environment.Set.ForceConsoleColor"/>
             </summary>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Color.WriteColoredLine(System.String,System.ConsoleColor)">
+            <summary>
+            Write a colored line (Writes the text with a \n at the end)
+            </summary>
+            <param name="text">The text of the line</param>
+            <param name="color">The color the text should have</param>
+        </member>
+        <member name="M:PatzminiHD.CSLib.Output.Console.Color.WriteColored(System.String,System.ConsoleColor)">
+            <summary>
+            Write colored text
+            </summary>
+            <param name="text">The text to write</param>
+            <param name="color">The color the text should have</param>
         </member>
         <member name="T:PatzminiHD.CSLib.Output.Console.ProgressBar">
             <summary>
