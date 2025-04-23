@@ -30,7 +30,7 @@ jobs:
           tag: ${{ github.ref_name }}
           
       - name: Calculate SHA512 hash (linux)
-        run: echo "linux_${tag/\//_}=$(sha512sum gpm/bin/Release/net8.0/win-x64/publish/gpm.exe | cut -d ' ' -f1)" >> realeaseBody.txt
+        run: echo "linux_${tag/\//_}=$(sha512sum gpm/bin/Release/net8.0/linux-x64/publish/gpm | cut -d ' ' -f1)" >> realeaseBody.txt
         env:
           tag: ${{ github.ref_name }}
           
