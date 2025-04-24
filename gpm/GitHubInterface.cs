@@ -94,8 +94,11 @@ namespace gpm
                 {
                     ("Accept", $"application/octet-stream"),
                     ("X-GitHub-Api-Version", $"2022-11-28"),
-                    ("Authorization", $"Bearer {accessToken}"),
                 };
+                if (!String.IsNullOrWhiteSpace(accessToken))
+                    customHeaders.Add(("Authorization", $"Bearer {accessToken}"));
+
+
                 FileDownloader fileDownloader = new FileDownloader(customHeaders);
                 fileDownloader.DownloadFailed += FileDownloader_DownloadFailed;
                 fileDownloader.DownloadProgess += FileDownloader_DownloadProgess;
