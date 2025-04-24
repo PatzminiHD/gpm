@@ -19,6 +19,7 @@ namespace gpm
             public string? versionTrackerFileName;
             public string? tagVersionSeperator;
             public string? fileVersionSeperator;
+            public string? lockFile;
         }
 
         public UpdateSettings updateSettings;
@@ -26,7 +27,7 @@ namespace gpm
         public AppSettings()
         {
             ApplicationName = "gpm";
-            ApplicationVersion = "v2.1.0";
+            ApplicationVersion = "v2.2.0";
 
             updateSettings = new UpdateSettings()
             {
@@ -36,9 +37,10 @@ namespace gpm
                 selfAccessToken = "",
                 updateApplications = new()
                 {
-                    ("Example (GitHub Repo name)", "Example (Github Repo Owner)", "Example (Name shown in gpm)", "Z:\\Example\\Path\\To\\Local\\Copy\\(Local path of the application)\\", "Example (Access token)")
+                    ("Example (Name shown in gpm)", "Example (Github Repo Owner)", "Example (GitHub Repo name)", "Z:\\Example\\Path\\To\\Local\\Copy\\(Local path of the application)\\", "Example (Access token)")
                 },
                 versionTrackerFileName = "CurrentVersion.txt",
+                lockFile = "gpm.lock",
                 tagVersionSeperator = "/",
                 fileVersionSeperator = "_",
             };

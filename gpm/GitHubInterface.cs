@@ -1,8 +1,7 @@
-﻿using PatzminiHD.CSLib.Network.SpecificApps;
+﻿using PatzminiHD.CSLib;
 using PatzminiHD.CSLib.Types;
 using PatzminiHD.CSLib.Network;
 using static PatzminiHD.CSLib.Network.SpecificApps.GitHub;
-using System.Net.Http;
 
 namespace gpm
 {
@@ -10,6 +9,8 @@ namespace gpm
     {
         public static Variant<bool, string> CheckForUpdates(out DataTypes.GpmUpdateEntry? returnRelease, string repoOwner, string repo, string localDirectory, string? accessToken = null)
         {
+            if (String.IsNullOrWhiteSpace(accessToken))
+                accessToken = null;
             returnRelease = null;
             string oldVersion, newVersion;
             var latestRelease = GetLatestRelease(repoOwner, repo, accessToken);
@@ -78,7 +79,44 @@ namespace gpm
 
             foreach (var asset in release.Value.GitHubRelease.assets)
             {
+                // Skip files for other operating systems
+                if (PatzminiHD.CSLib.Environment.Get.OS == PatzminiHD.CSLib.Environment.Get.OperatingSystem.Linux)
+                    if (asset.name.ToLower().Contains("windows"))
+                        continue;
+                if (PatzminiHD.CSLib.Environment.Get.OS == PatzminiHD.CSLib.Environment.Get.OperatingSystem.Windows)
+                    if (asset.name.ToLower().Contains("linux"))
+                        continue;
+
                 string localFileName = Path.Combine(localDirectory, GetAssetNameWithoutVersion(asset.name));
+                string localTmpFileName = localFileName + ".tmp";
+                
+                List<(string name, string value)>? customHeaders = new()
+                {
+                    ("Accept", $"application/octet-stream"),
+                    ("X-GitHub-Api-Version", $"2022-11-28"),
+                    ("Authorization", $"Bearer {accessToken}"),
+                };
+                FileDownloader fileDownloader = new FileDownloader(customHeaders);
+                fileDownloader.DownloadFailed += FileDownloader_DownloadFailed;
+                fileDownloader.DownloadProgess += FileDownloader_DownloadProgess;
+                var downloadStatus = fileDownloader.Download(asset.url, localTmpFileName);
+                downloadStatus.Wait();
+
+                Console.WriteLine("Checking file hash...");
+                var remoteFileHash = GetHashFromReleaseBody(release.Value.GitHubRelease.body, asset.name);
+                if (remoteFileHash == null)
+                    Console.WriteLine("Hash was not specified by remote");
+                else
+                {
+                    if(!CheckFileHash(localTmpFileName, remoteFileHash))
+                    {
+
+                        return "File hash did not match!";
+                    }
+                    else
+                        Console.WriteLine($"File hash matched!");
+                }
+
                 if (File.Exists(localFileName))
                 {
                     string localVersion;
@@ -89,7 +127,7 @@ namespace gpm
 
                     if (deleteOldVersion)
                         File.Delete(localFileName);
-                    else if(repoOwner == Program.appSettings.updateSettings.selfRepoOwner && repo == Program.appSettings.updateSettings.selfRepoName)
+                    else if (repoOwner == Program.appSettings.updateSettings.selfRepoOwner && repo == Program.appSettings.updateSettings.selfRepoName)
                     {
                         // ===========
                         // Self-update
@@ -109,28 +147,8 @@ namespace gpm
 
                     }
                 }
-                List<(string name, string value)>? customHeaders = new()
-                {
-                    ("Accept", $"application/octet-stream"),
-                    ("X-GitHub-Api-Version", $"2022-11-28"),
-                    ("Authorization", $"Bearer {accessToken}"),
-                };
-                FileDownloader fileDownloader = new FileDownloader(customHeaders);
-                fileDownloader.DownloadFailed += FileDownloader_DownloadFailed;
-                fileDownloader.DownloadProgess += FileDownloader_DownloadProgess;
-                var downloadStatus = fileDownloader.Download(asset.url, localFileName);
-                downloadStatus.Wait();
 
-                var remoteFileHash = GetHashFromReleaseBody(release.Value.GitHubRelease.body, asset.name);
-                if (remoteFileHash == null)
-                    Console.WriteLine("Hash has not specified by remote");
-                else
-                {
-                    if(!CheckFileHash(localFileName, remoteFileHash))
-                        return "File hash did not match!";
-                    else
-                        Console.WriteLine($"File hash matched!");
-                }
+                File.Move(localTmpFileName, localFileName);
             }
 
             string versionTrackerFile = Path.Combine(localDirectory, Program.appSettings.updateSettings.versionTrackerFileName);
@@ -192,7 +210,7 @@ namespace gpm
             foreach(string line in releaseBody.Split('\n'))
             {
                 if(line.StartsWith(fileName) && line.Contains('='))
-                    return line.Substring(line.IndexOf('=')).Trim();
+                    return line.Substring(line.IndexOf('=')+1).Trim();
             }
             return null;
         }
@@ -210,7 +228,8 @@ namespace gpm
 
             string fileExtension;
 
-            if (!assetName.Contains('.'))
+            //Linux executables do not have a file extension
+            if (!assetName.Contains('.') || assetName.Split(Path.DirectorySeparatorChar).Last().ToLower().Contains("linux"))
                 fileExtension = "";
             else
             {
@@ -220,8 +239,10 @@ namespace gpm
                 if (fileExtension.Contains(Path.DirectorySeparatorChar))
                     return assetName.Split(Program.appSettings.updateSettings.fileVersionSeperator).First();
             }
-
-            return assetName.Split(Program.appSettings.updateSettings.fileVersionSeperator).First() + '.' + fileExtension;
+            if(assetName.ToLower().StartsWith("linux") || assetName.ToLower().StartsWith("windows"))
+                return assetName.Split(Program.appSettings.updateSettings.fileVersionSeperator)[1] + '.' + fileExtension;
+            else
+                return assetName.Split(Program.appSettings.updateSettings.fileVersionSeperator).First() + '.' + fileExtension;
         }
     }
 }
