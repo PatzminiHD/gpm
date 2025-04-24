@@ -27,7 +27,7 @@ namespace gpm
         public AppSettings()
         {
             ApplicationName = "gpm";
-            ApplicationVersion = "v2.3.2";
+            ApplicationVersion = "v2.4.0";
 
             updateSettings = new UpdateSettings()
             {

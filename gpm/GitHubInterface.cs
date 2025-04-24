@@ -7,6 +7,7 @@ namespace gpm
 {
     internal class GitHubInterface
     {
+        private static PatzminiHD.CSLib.Output.Console.ProgressBar progressBar = new(0, 100, -1, -1, (uint)Console.WindowWidth - 10, false);
         public static Variant<bool, string> CheckForUpdates(out DataTypes.GpmUpdateEntry? returnRelease, string repoOwner, string repo, string localDirectory, string? accessToken = null)
         {
             if (String.IsNullOrWhiteSpace(accessToken))
@@ -102,8 +103,9 @@ namespace gpm
                 FileDownloader fileDownloader = new FileDownloader(customHeaders);
                 fileDownloader.DownloadFailed += FileDownloader_DownloadFailed;
                 fileDownloader.DownloadProgess += FileDownloader_DownloadProgess;
-                var downloadStatus = fileDownloader.Download(asset.url, localTmpFileName);
+                var downloadStatus = fileDownloader.Download(asset.url, localTmpFileName, true);
                 downloadStatus.Wait();
+                Console.WriteLine();    //New line after the progress bar
 
                 Console.WriteLine("Checking file hash...");
                 var remoteFileHash = GetHashFromReleaseBody(release.Value.GitHubRelease.body, asset.name);
@@ -165,8 +167,9 @@ namespace gpm
 
         private static void FileDownloader_DownloadProgess(object? sender, FileDownloader.DownloadProgressEventArgs e)
         {
-            //TODO
-            //throw new NotImplementedException();
+            progressBar.Value = e.Progress;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            progressBar.Draw();
         }
 
         private static void FileDownloader_DownloadFailed(object? sender, FileDownloader.DownloadFailedEventArgs e)
