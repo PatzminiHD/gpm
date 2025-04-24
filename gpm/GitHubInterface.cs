@@ -142,8 +142,8 @@ namespace gpm
                             Directory.CreateDirectory(backupDirectory);
 
 
-                        foreach (var file in Directory.GetFiles(localDirectory))
-                            File.Move(file, Path.Combine(backupDirectory, file.Split(Path.DirectorySeparatorChar).Last()));
+
+                        File.Move(localFileName, Path.Combine(backupDirectory, Path.GetFileName(localFileName)));
 
                     }
                 }
