@@ -1997,6 +1997,9 @@
         <member name="P:PatzminiHD.CSLib.Settings.Base.ApplicationSettingsFilePath">
             <summary> The Path of the settings file </summary>
         </member>
+        <member name="P:PatzminiHD.CSLib.Settings.Base.ApplicationSettingsFolderPath">
+            <summary> The Path of the folder where the settings file resides </summary>
+        </member>
         <member name="M:PatzminiHD.CSLib.Settings.Base.Serialize">
             <summary> Serialize Settings to a file </summary>
             <exception cref="T:System.Exception"> When <see cref="F:PatzminiHD.CSLib.Settings.Base.ApplicationName"/> is null </exception>
